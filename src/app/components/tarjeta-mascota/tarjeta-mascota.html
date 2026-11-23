@@ -6,9 +6,12 @@
         }
     </div>
     <h3 data-testid="nombre-mascota" class="tarjeta__nombre">{{ mascota().nombre }}</h3>
+    <p data-testid="edad-mascota" class="tarjeta__dato"> {{ formatearEdad() }}</p>
     <h3 class="tarjeta__detalle">
         <a data-testid="ver-detalle" [routerLink]="['/mascotas', mascota().id]">Ver detalle</a>
     </h3>
-    <p data-testid="edad-mascota" class="tarjeta__dato"> {{ formatearEdad() }}</p>
+    <button data-testid="boton-favorito" type="button" class="boton boton--secundario" (click)="favoritoAlternado.emit(mascota().id)">
+        {{ esFavorita() ? 'En mi lista' : 'Me interesa' }}
+    </button>
    
 </article>

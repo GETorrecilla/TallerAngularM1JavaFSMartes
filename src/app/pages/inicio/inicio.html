@@ -7,6 +7,6 @@
 <h2 class="listado__titulo">Por adoptar</h2>
 <div class="listado__grilla">
   @for (mascota of destacados; track mascota.id) {
-    <app-tarjeta-mascota [mascota]="mascota" />
+    <app-tarjeta-mascota [mascota]="mascota" [esFavorita]="favorito.esFavorita(mascota.id)" (favoritoAlternado)="favorito.alternar(mascota.id)"/>
   }
 </div>

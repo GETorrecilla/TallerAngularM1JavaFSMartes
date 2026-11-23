@@ -1,0 +1,16 @@
+<section class="favorito">
+  <h2 class="listado__titulo">Mis favoritas</h2>
+  <div class="listado__grilla">
+    @for (item of favorito.mascotasFavoritas(); track item.id) {
+      <app-tarjeta-mascota [mascota]="item" [esFavorita]="true" (favoritoAlternado)="favorito.alternar(item.id)" />
+    } @empty {
+      <p data-testid="lista-vacia" class="listado__vacio">Todavía no tienes favoritas.</p>
+      <a class="boton portada__boton" routerLink="/mascotas">Ir al listado</a>
+    }
+  </div>
+    @if (favorito.total() > 0) {
+      <p class="favorito__total">
+        Favoritas: {{ favorito.total() }}
+      </p>
+    }
+</section>

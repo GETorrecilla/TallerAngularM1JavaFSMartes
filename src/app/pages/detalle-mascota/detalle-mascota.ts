@@ -1,8 +1,9 @@
-import { Component, input } from '@angular/core';
+import { Component, computed, inject, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { MASCOTAS } from '../../data/mascotas.mock';
 import { Mascota } from '../../models/mascota';
 import { TarjetaMascota } from '../../components/tarjeta-mascota/tarjeta-mascota';
+import { FavoritosStore } from '../../services/favoritos-store';
 
 @Component({
   imports: [RouterLink, TarjetaMascota],
@@ -11,9 +12,9 @@ import { TarjetaMascota } from '../../components/tarjeta-mascota/tarjeta-mascota
   templateUrl: './detalle-mascota.html',
 })
 export class DetalleMascota {
+  protected readonly favorito = inject(FavoritosStore);
   id = input.required<string>();
 
-  mascotaActual(): Mascota | undefined {
-    return MASCOTAS.find((mascota) => mascota.id === Number(this.id()));
-  }
+  mascotaActual = computed(() => MASCOTAS.find((mascota) => mascota.id === Number(this.id())));
+  
 }

@@ -1,7 +1,7 @@
 @if (mascotaActual(); as mascota) {
     <section class="detalle">
       <a class="detalle__volver" routerLink="/mascotas">← Volver al listado</a>
-      <app-tarjeta-mascota data-testid="detalle-nombre" [mascota]="mascota" />
+      <app-tarjeta-mascota data-testid="detalle-nombre" [mascota]="mascota" [esFavorita]="favorito.esFavorita(mascota.id)" (favoritoAlternado)="favorito.alternar(mascota.id)" />
     </section>
   } @else {
     <section class="aviso">

@@ -16,5 +16,10 @@ export const routes: Routes = [
       import('./pages/detalle-mascota/detalle-mascota').then((m) => m.DetalleMascota),
     title: 'Huellas · Mascota',
   },
+  { path: 'mi-lista', 
+    loadComponent: () => 
+      import('./pages/mi-lista/mi-lista').then((m) => m.MiLista),
+    title: 'Huellas · Mis favoritas',
+  },
   { path: '**', component: NoEncontrada, title: 'Huellas · Página no encontrada' },
 ];

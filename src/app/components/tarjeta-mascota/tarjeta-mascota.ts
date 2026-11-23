@@ -1,4 +1,4 @@
-import { Component, input } from '@angular/core';
+import { Component, input, output } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { Mascota } from '../../models/mascota';
 import { Etiqueta } from '../../shared/etiqueta/etiqueta';
@@ -12,6 +12,8 @@ import { Etiqueta } from '../../shared/etiqueta/etiqueta';
 
 export class TarjetaMascota {
   mascota = input.required<Mascota>();
+  esFavorita = input(false);
+  favoritoAlternado=output<number>();
 
   formatearEdad(): string {
     const edadMeses = Math.floor(this.mascota().edadMeses);
